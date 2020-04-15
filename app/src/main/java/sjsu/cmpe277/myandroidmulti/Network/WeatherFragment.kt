@@ -30,10 +30,27 @@ class WeatherFragment : Fragment() {
         //viewModel = ViewModelProviders.of(this).get(QuestionViewModel::class.java)
         viewModel = ViewModelProviders.of(this).get(WeatherViewModel::class.java)
 
-        viewModel._response.observe(viewLifecycleOwner, Observer { newresponse ->
+        /*viewModel._response.observe(viewLifecycleOwner, Observer { newresponse ->
             binding.weathertextView.text = newresponse.toString() //display the raw json data
+        })*/
+        viewModel._mainweather.observe(viewLifecycleOwner, Observer { newresponse ->
+            binding.mainWeatherText.text = newresponse.toString()
         })
-
+        viewModel._maintemp.observe(viewLifecycleOwner, Observer { newresponse ->
+            binding.tempText.text = newresponse.toString()
+        })
+        viewModel._tempminmax.observe(viewLifecycleOwner, Observer { newresponse ->
+            binding.tempMinMaxText.text = newresponse.toString()
+        })
+        viewModel._humidity.observe(viewLifecycleOwner, Observer { newresponse ->
+            binding.humidityData.text = newresponse.toString()
+        })
+        viewModel._wind.observe(viewLifecycleOwner, Observer { newresponse ->
+            binding.windData.text = newresponse.toString()
+        })
+        viewModel._pressure.observe(viewLifecycleOwner, Observer { newresponse ->
+            binding.pressureData.text = newresponse.toString()
+        })
         return binding.root//inflater.inflate(R.layout.weather_fragment, container, false)
     }
 

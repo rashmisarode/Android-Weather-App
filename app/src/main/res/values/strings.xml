@@ -21,4 +21,5 @@
     <string name="text_enterphonenumber">Enter your phone number</string>
     <string name="text_riskscorelabel">Your risk score</string>
     <string name="button_getscore">Get risk score</string>
+    <string name="textview">TextView</string>
 </resources>
