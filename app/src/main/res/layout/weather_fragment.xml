@@ -196,7 +196,7 @@ tools:context=".Network.WeatherFragment">
 
                     <TextView
                         android:id="@+id/tempText"
-                        android:layout_width="170dp"
+                        android:layout_width="270dp"
                         android:layout_height="50dp"
                         android:layout_marginTop="220dp"
                         android:layout_marginBottom="49dp"

@@ -66,6 +66,10 @@ class WeatherViewModel : ViewModel() {
 
                    // Log.i("MainActivity", response.body()?.weatherPart?.get(0)?.description);
 
+                    val mainTemp = (response.body()?.mainpart?.temp?.minus(273.15));
+                    val maxTemp = (response.body()?.mainpart?.temp_max?.minus(273.15));
+                    val minTemp = (response.body()?.mainpart?.temp_min?.minus(273.15));
+
                     val date  = getDate(response.body()?.dt);
                     val todayDt = DateFormat.getDateInstance(DateFormat.FULL).format(date);
                     Log.i("MainActivity", DateFormat.getTimeInstance().format(date));
@@ -84,8 +88,8 @@ class WeatherViewModel : ViewModel() {
                     _name.value = "${response.body()?.name}"
                     _datetoday.value = todayDt
                     _mainweather.value = "${response.body()?.weatherPart?.get(0)?.main} (${response.body()?.weatherPart?.get(0)?.description})"
-                    _maintemp.value = "${response.body()?.mainpart?.temp}"+"°F"
-                    _tempminmax.value = "Min: ${response.body()?.mainpart?.temp_min}"+"°F"+ " "+ "|"+ " " + "Max: ${response.body()?.mainpart?.temp_max}"+"°F"
+                    _maintemp.value = String.format("%.1f", mainTemp) + "°C"
+                    _tempminmax.value = "Min: " + String.format("%.1f", minTemp) +"°C"+ " "+ "|"+ " " + "Max: " + String.format("%.1f", maxTemp) +"°C"
                     _humidity.value = "${response.body()?.mainpart?.humidity}"+ " " + "%"
                     _wind.value = "${response.body()?.windpart?.speed}"+ " " + "mph"
                     _pressure.value = "${response.body()?.mainpart?.pressure}"+ " " + "atm"
