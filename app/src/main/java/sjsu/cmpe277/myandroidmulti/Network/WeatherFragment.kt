@@ -33,6 +33,12 @@ class WeatherFragment : Fragment() {
         /*viewModel._response.observe(viewLifecycleOwner, Observer { newresponse ->
             binding.weathertextView.text = newresponse.toString() //display the raw json data
         })*/
+        viewModel._name.observe(viewLifecycleOwner, Observer { newresponse ->
+            binding.cityTitle.text = newresponse.toString()
+        })
+        viewModel._datetoday.observe(viewLifecycleOwner, Observer { newresponse ->
+            binding.todayDateText.text = newresponse.toString()
+        })
         viewModel._mainweather.observe(viewLifecycleOwner, Observer { newresponse ->
             binding.mainWeatherText.text = newresponse.toString()
         })
@@ -50,6 +56,12 @@ class WeatherFragment : Fragment() {
         })
         viewModel._pressure.observe(viewLifecycleOwner, Observer { newresponse ->
             binding.pressureData.text = newresponse.toString()
+        })
+        viewModel._sunrise.observe(viewLifecycleOwner, Observer { newresponse ->
+            binding.sunriseData.text = newresponse.toString()
+        })
+        viewModel._sunset.observe(viewLifecycleOwner, Observer { newresponse ->
+            binding.sunsetData.text = newresponse.toString()
         })
         return binding.root//inflater.inflate(R.layout.weather_fragment, container, false)
     }

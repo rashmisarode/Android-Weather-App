@@ -11,9 +11,10 @@ data class WeatherProperty (
     @Json(name = "main") val mainpart: MainWeatherPart,
     @Json(name = "wind") val windpart: WindWeatherPart,
     @Json(name = "weather") val weatherPart: List<WeatherPart>,
+    @Json(name = "sys") val sysPart: SysWeatherPart,
     val name: String,
     val cod: Double,
-    val dt: String
+    val dt: Long
 )
 
 data class MainWeatherPart(
@@ -27,8 +28,11 @@ data class WindWeatherPart(
     val speed: Double,
     val deg: Double
 )
-
 data class WeatherPart(
     val main: String,
     val description: String
+)
+data class SysWeatherPart(
+    val sunrise: Long,
+    val sunset: Long
 )
